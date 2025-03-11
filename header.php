@@ -1,9 +1,9 @@
-<?php $__APP_NAME__ = ""; include("start-session.php"); ?>
+<?php $__APP_NAME__ = "SolitaireCat"; include("start-session.php"); ?>
 
 <div class="navbar column align-center justify-center">
     <div style="width: 100%" class="row align-center justify-center">
         <div class="column align-center justify-center">
-            <h1 id="navbar-title"><?php echo $__APP_NAME__; ?></h1>
+            <h1 id="navbar-title">SolitaireCat</h1>
             <a href="https://apps.nathcat.net">Part of the Nathcat Network</a>
         </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $__APP_NAME__; ?></title>
+        <title>SolitaireCat</title>
 
         <link rel="stylesheet" href="https://nathcat.net/static/css/new-common.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
