@@ -100,10 +100,9 @@
             };
 
             let N = stacks.length;
-            let di = 0;
             for (let i = 0; i < stacks.length; i++) {
                 for (let c = 0; c < N; c++) {
-                    stacks[i].append(deck[di++]);
+                    stacks[i].append(deck.pop());
                 }
 
                 stacks[i].last().revealed = true;
