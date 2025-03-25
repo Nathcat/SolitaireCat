@@ -13,6 +13,10 @@
     <body>
         <div id="page-content" class="content">
             <?php include("header.php"); ?>
+            
+            <div class="main">
+                
+            </div>
 
             <?php include("footer.php"); ?>
         </div>

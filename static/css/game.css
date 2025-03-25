@@ -1,0 +1,99 @@
+/*
+Cards
+*/
+
+.highlight-card {
+    display: grid;
+    width: 100%;
+    aspect-ratio: 1 / 2;
+    background: linear-gradient(45deg, #e600ff 0%, #00ccff 100%);
+    filter: opacity(50%);
+    border-radius: 5%;
+    box-sizing: border-box;
+}
+
+.highlight-card:hover {
+    filter: opacity(75%);
+    cursor: pointer;
+}
+
+.card {
+    display: grid;
+    width: 100%;
+    aspect-ratio: 1 / 2;
+    background-color: var(--secondary-color);
+    border-radius: 5%;
+    box-sizing: border-box;
+    border: 1px solid var(--quad-color);
+
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-areas: 
+        "numberL . ."
+        ". suit ."
+        ". . numberR";
+}
+
+.card .numberL {
+    grid-area: numberL;
+    text-align: center;
+    width: fit-content;
+    margin: 5px auto auto 5px;
+    font-size: 3em;
+}
+
+.card .numberR {
+    grid-area: numberR;
+    text-align: center;
+    width: fit-content;
+    margin: auto 5px 5px auto;
+    font-size: 3em;
+}
+
+.card.hearts .numberL, .card.hearts .numberR, .card.diamonds .numberR, .card.diamonds .numberL {
+    color: #e600ff;
+}
+
+.card.spades .numberL, .card.spades .numberR, .card.clubs .numberR, .card.clubs .numberL {
+    color: #00ccff;
+}
+
+.card .suit {
+    grid-area: suit;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.card.hearts .suit img {
+    place-self: center;
+    content:url("/static/images/heart-svgrepo-com.svg");
+}
+
+.card.spades .suit img {
+    place-self: center;
+    content:url("/static/images/spade-svgrepo-com.svg");
+}
+
+.card.clubs .suit img {
+    place-self: center;
+    content:url("/static/images/club-svgrepo-com.svg");
+}
+
+.card.diamonds .suit img {
+    place-self: center;
+    content:url("/static/images/diamond-svgrepo-com.svg");
+}
+
+/*
+Card stack
+*/
+
+.card-stack {
+    display: block;
+    position: relative;
+    height: fit-content;
+    width: 10%;
+}
