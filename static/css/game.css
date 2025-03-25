@@ -67,6 +67,11 @@ Cards
     display: grid;
 }
 
+.card .suit img {
+    width: 100%;
+    place-self: center;
+}
+
 .card.hearts .suit img {
     place-self: center;
     content:url("/static/images/heart-svgrepo-com.svg");

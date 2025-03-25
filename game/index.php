@@ -40,16 +40,74 @@
                 new CardStack("stack-6", 75)
             ];
 
-            let deck = generate_deck();
+            let deck = shuffle_deck(generate_deck());
+            let selected_card;
+            let selected_card_stack;
+
+            let card_click_handler = function() {
+                for (let i = 0; i < stacks.length; i++) {
+                    stacks[i].highlighted = false;
+                }
+
+                let card = stacks[$(this).parent().index()].cards[$(this).index()];
+                if (!card.revealed) {
+                    console.log("Not revealed!");
+                    stacks.forEach((v) => v.update(card_click_handler));
+                    return;
+                }
+
+                selected_card_stack = stacks[$(this).parent().index()];
+                selected_card = card;
+
+                for (let i = 0; i < stacks.length; i++) {
+                    if (stacks[i].cards.length > 0) {
+                        if (stacks[i].last().valid_next_card(card)) {
+                            stacks[i].highlighted = true;
+                        }
+                    }
+                    else {
+                        if (card.num === "K") {
+                            stacks[i].highlighted = true;
+                        }
+                    }
+                }
+
+                stacks.forEach((v) => v.update(card_click_handler));
+            };
+
+            let unselect_card = function() {
+                selected_card = undefined;
+                selected_card_stack = undefined;
+            }
+
+            highlighted_card_click_handler = function() {
+                let target_stack = stacks[$(this).parent().index()];
+                let cards = selected_card_stack.remove(selected_card);
+                cards.forEach((v) => {
+                    target_stack.append(v);
+                });
+
+                if (selected_card_stack.cards.length !== 0) {
+                    selected_card_stack.last().revealed = true;
+                }
+
+                unselect_card();
+
+                stacks.forEach((v) => {
+                    v.highlighted = false;
+                    v.update(card_click_handler);
+                })
+            };
 
             let N = stacks.length;
             let di = 0;
             for (let i = 0; i < stacks.length; i++) {
-                stacks[i].highlighted = true;
-                
                 for (let c = 0; c < N; c++) {
                     stacks[i].append(deck[di++]);
                 }
+
+                stacks[i].last().revealed = true;
+                stacks[i].update(card_click_handler);
 
                 N--;
             }
