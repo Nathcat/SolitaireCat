@@ -40,7 +40,7 @@ Cards
     text-align: center;
     width: fit-content;
     margin: 5px auto auto 5px;
-    font-size: 3em;
+    font-size: 200%;
 }
 
 .card .numberR {
@@ -48,7 +48,7 @@ Cards
     text-align: center;
     width: fit-content;
     margin: auto 5px 5px auto;
-    font-size: 3em;
+    font-size: 200%;
 }
 
 .card.hearts .numberL, .card.hearts .numberR, .card.diamonds .numberR, .card.diamonds .numberL {
@@ -69,6 +69,7 @@ Cards
 
 .card .suit img {
     width: 100%;
+    aspect-ratio: 1;
     place-self: center;
 }
 
@@ -100,5 +101,5 @@ Card stack
     display: block;
     position: relative;
     height: fit-content;
-    width: 10%;
+    width: 5%;
 }

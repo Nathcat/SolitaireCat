@@ -15,7 +15,7 @@
             <?php include("header.php"); ?>
             
             <div class="main">
-                
+                <?php /* TEMP REDIRECT */ header("Location: /game");?>
             </div>
 
             <?php include("footer.php"); ?>
