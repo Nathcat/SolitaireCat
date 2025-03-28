@@ -45,6 +45,8 @@ class CardStack {
         else {
             this.is_ace_pile = is_ace_pile;
         }
+
+        $(`#${this.id}`).height(this.calc_height());
     }
 
     card_height() {
@@ -96,7 +98,7 @@ class CardStack {
     }
 
     calc_height() {
-        if (this.cards.length === 0) return 0;
+        if (this.cards.length === 0) return this.card_height();
 
         return this.offset * (this.cards.length - 1) + this.card_height();
     }
