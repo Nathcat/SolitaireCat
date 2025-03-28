@@ -56,7 +56,7 @@
                     method: "POST",
                     body: JSON.stringify({
                         "leaderboardId": 3,
-                        "orderBy": "ASC",
+                        "orderBy": "DESC",
                         "limit": 5
                     })
                 }).then((r) => r.json()).then((r) => {
