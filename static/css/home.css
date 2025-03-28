@@ -1,0 +1,14 @@
+.big-button:hover {
+    background: linear-gradient(45deg, #e600ff 0%, #00ccff 100%);
+    cursor: pointer;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    border-top: 1px solid var(--quad-color);
+    border-bottom: 1px solid var(--quad-color);
+    box-sizing: border-box;
+}

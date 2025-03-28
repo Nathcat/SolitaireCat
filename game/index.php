@@ -23,6 +23,8 @@
                 <div id="revealed-stack" class="card-stack"></div>
                 <button style="height: fit-content;" onclick="reset_draw_stack();">Reset draw pile</button>
 
+                <p id="timer">0:00</p>
+
                 <div id="ace-stack-0" class="card-stack"></div>
                 <div id="ace-stack-1" class="card-stack"></div>
                 <div id="ace-stack-2" class="card-stack"></div>
@@ -93,6 +95,7 @@
                 });
 
                 if (win) {
+                    clearInterval(timerID);
                     alert("You have won!");
 
                     // Update all stacks without click handlers so the game state cannot be changed!
@@ -100,6 +103,9 @@
                     ace_stacks.forEach((v) => v.update());
                     draw_stack.update();
                     revealed_stack.update();
+
+
+                    submit_timer_score(<?php echo $_SESSION["user"]["id"] . ", " . $_SESSION["user"]["username"]; ?>);
                 }
             }
 
@@ -180,6 +186,7 @@
                     v.update(card_click_handler);
                 });
 
+                if (timerID === undefined) start_timer();
                 check_for_win();
             };
 
