@@ -105,7 +105,8 @@
                     revealed_stack.update();
 
 
-                    submit_timer_score(<?php echo $_SESSION["user"]["id"] . ", " . $_SESSION["user"]["username"]; ?>);
+                    submit_timer_score(<?php echo $_SESSION["user"]["id"] . ", \"" . $_SESSION["user"]["username"] . "\""; ?>);
+                    submit_new_win(<?php echo $_SESSION["user"]["id"] . ", \"" . $_SESSION["user"]["username"] . "\""; ?>);
                 }
             }
 
