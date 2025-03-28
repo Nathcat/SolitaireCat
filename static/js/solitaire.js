@@ -35,7 +35,7 @@ function card_name_to_num(name) {
 class CardStack {
     constructor(id, offset, is_ace_pile) {
         this.id = id;
-        this.offset = offset;
+        this.offset = this.card_height() * offset;
         this.cards = [];
         this.highlighted = false;
 
@@ -45,6 +45,10 @@ class CardStack {
         else {
             this.is_ace_pile = is_ace_pile;
         }
+    }
+
+    card_height() {
+        return $(`#${this.id}`).width() * 2;
     }
 
     append(card) {
@@ -94,7 +98,7 @@ class CardStack {
     calc_height() {
         if (this.cards.length === 0) return 0;
 
-        return this.offset * (this.cards.length - 1) + $(`#${this.id}`).children().last().height();
+        return this.offset * (this.cards.length - 1) + this.card_height();
     }
 
     last() {

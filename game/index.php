@@ -29,7 +29,7 @@
                 <div id="ace-stack-3" class="card-stack"></div>
             </div>
 
-            <div class="row justify-center" style="gap: 1%;">
+            <div class="row" style="justify-content: space-around;">
                 <div id="stack-0" class="card-stack"></div>
                 <div id="stack-1" class="card-stack"></div>
                 <div id="stack-2" class="card-stack"></div>
@@ -42,13 +42,13 @@
 
         <script>
             let stacks = [
-                new CardStack("stack-0", 50),
-                new CardStack("stack-1", 50),
-                new CardStack("stack-2", 50),
-                new CardStack("stack-3", 50),
-                new CardStack("stack-4", 50),
-                new CardStack("stack-5", 50),
-                new CardStack("stack-6", 50)
+                new CardStack("stack-0", 0.25),
+                new CardStack("stack-1", 0.25),
+                new CardStack("stack-2", 0.25),
+                new CardStack("stack-3", 0.25),
+                new CardStack("stack-4", 0.25),
+                new CardStack("stack-5", 0.25),
+                new CardStack("stack-6", 0.25)
             ];
 
             let ace_stacks = [
