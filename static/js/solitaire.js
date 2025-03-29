@@ -207,7 +207,7 @@ function submit_timer_score(userID, username) {
     }).then((r) => r.json()).then((r) => {
         if (r.status === "success") {
             r.results.filter((record) => record.username === username);
-            if (r.results.length !== 0 && r.results[0].value >= timer) {
+            if (r.results.length !== 0 && r.results[0].value <= timer) {
                 console.log("Already has a better time!");
                 return;
             }
