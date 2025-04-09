@@ -242,7 +242,7 @@ function submit_new_win(userID, username) {
         if (r.status === "success") {
             r.results.filter((record) => record.username === username);
 
-            let newValue = r.results.length === 0 ? 1 : r.results[0].value + 1;
+            let newValue = r.results.length === 0 ? 1 : parseInt(r.results[0].value) + 1;
 
             fetch("https://data.nathcat.net/data/edit-leaderboard-record.php", {
                 method: "POST",
