@@ -198,67 +198,32 @@ function shuffle_deck(deck) {
 }
 
 function submit_timer_score(userID, username) {
-    fetch("https://data.nathcat.net/data/get-leaderboard-state.php", {
+    fetch("https://data.nathcat.net/data/edit-leaderboard-record.php", {
         method: "POST",
         body: JSON.stringify({
-            "leaderboardId": 3,
-            "orderBy": "ASC"
+            "apiKey": "99658a71fda03267743da380aea25bc20f1af5a1dd7ba52ac9d692b22fc69c2f",
+            "leaderboardId": 2,
+            "user": userID,
+            "value": timer,
+            "if": "<"
         })
-    }).then((r) => r.json()).then((r) => {
-        if (r.status === "success") {
-            r.results.filter((record) => record.username === username);
-            if (r.results.length !== 0 && r.results[0].value <= timer) {
-                console.log("Already has a better time!");
-                return;
-            }
-
-            fetch("https://data.nathcat.net/data/edit-leaderboard-record.php", {
-                method: "POST",
-                body: JSON.stringify({
-                    "apiKey": "99658a71fda03267743da380aea25bc20f1af5a1dd7ba52ac9d692b22fc69c2f",
-                    "leaderboardId": 2,
-                    "user": userID,
-                    "value": timer
-                })
-            }).then((r1) => r1.json()).then((r1) => {
-                if (r1.status === "success") console.log("Time submitted to DataCat");
-                else console.log("Failed to submit time: " + r1.message);
-            });
-        }
-        else {
-            console.log("Failed to get timer leaderboard state: " + r.message)
-        }
+    }).then((r1) => r1.json()).then((r1) => {
+        if (r1.status === "success") console.log("Time submitted to DataCat");
+        else console.log("Failed to submit time: " + r1.message);
     });
 }
 
 function submit_new_win(userID, username) {
-    fetch("https://data.nathcat.net/data/get-leaderboard-state.php", {
+    fetch("https://data.nathcat.net/data/increment-leaderboard-record.php", {
         method: "POST",
         body: JSON.stringify({
+            "apiKey": "99658a71fda03267743da380aea25bc20f1af5a1dd7ba52ac9d692b22fc69c2f",
             "leaderboardId": 3,
-            "orderBy": "ASC",
+            "user": userID,
+            "value": 1
         })
-    }).then((r) => r.json()).then((r) => {
-        if (r.status === "success") {
-            r.results.filter((record) => record.username === username);
-
-            let newValue = r.results.length === 0 ? 1 : parseInt(r.results[0].value) + 1;
-
-            fetch("https://data.nathcat.net/data/edit-leaderboard-record.php", {
-                method: "POST",
-                body: JSON.stringify({
-                    "apiKey": "99658a71fda03267743da380aea25bc20f1af5a1dd7ba52ac9d692b22fc69c2f",
-                    "leaderboardId": 3,
-                    "user": userID,
-                    "value": newValue
-                })
-            }).then((r1) => r1.json()).then((r1) => {
-                if (r1.status === "success") console.log("Win submitted to DataCat");
-                else console.log("Failed to submit new win: " + r1.message);
-            });
-        }
-        else {
-            console.log("Failed to get total solved leaderboard state: " + r.message)
-        }
+    }).then((r1) => r1.json()).then((r1) => {
+        if (r1.status === "success") console.log("Win submitted to DataCat");
+        else console.log("Failed to submit new win: " + r1.message);
     });
 }
