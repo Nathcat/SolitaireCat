@@ -203,6 +203,20 @@
             }
 
             let draw_card_handler = function() {
+                // Fixes bug where player can play a card which is not at the top of the draw pile.
+                unselect_card();
+
+                stacks.forEach((v) => {
+                    v.highlighted = false;
+                    v.update(card_click_handler);
+                });
+
+                ace_stacks.forEach((v) => {
+                    v.highlighted = false;
+                    v.update(card_click_handler);
+                });
+                // --
+
                 let card = draw_stack.last();
                 draw_stack.remove(card);
                 card.revealed = true;
